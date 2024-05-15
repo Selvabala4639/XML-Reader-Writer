@@ -1,0 +1,61 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\DocIO\\XmlReader & XmlWriter assessment\\XmlReader & XmlWriter assessment.csproj": {}
+  },
+  "projects": {
+    "D:\\DocIO\\XmlReader & XmlWriter assessment\\XmlReader & XmlWriter assessment.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\DocIO\\XmlReader & XmlWriter assessment\\XmlReader & XmlWriter assessment.csproj",
+        "projectName": "XmlReader & XmlWriter assessment",
+        "projectPath": "D:\\DocIO\\XmlReader & XmlWriter assessment\\XmlReader & XmlWriter assessment.csproj",
+        "packagesPath": "C:\\Users\\SelvabalaVelmurugan\\.nuget\\packages\\",
+        "outputPath": "D:\\DocIO\\XmlReader & XmlWriter assessment\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\SelvabalaVelmurugan\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.316\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
