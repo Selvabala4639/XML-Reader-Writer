@@ -10,80 +10,91 @@ namespace XmlReader___XmlWriter_assessment
 {
     public class BookReader
     {
+        //This method is used to read xml and create object for BookCollection
         public static BookCollection ReadFromXml(string filePath)
         {
+            //Create object for BookCollection 
             BookCollection books = new BookCollection();
-
+            XmlReaderSettings settings = new XmlReaderSettings();
+            settings.IgnoreWhitespace = true;
+            //This will initialize XML reader
             using (XmlReader reader = XmlReader.Create(filePath))
             {
-                // Read the XML until there are no more nodes
+                // Iterate through each node of the xml document until there is no more nodes.
                 while (reader.Read())
                 {
-                    if (reader.NodeType == XmlNodeType.Whitespace || reader.NodeType == XmlNodeType.SignificantWhitespace)
+                    //To check node type is whitspace
+                    if (reader.NodeType == XmlNodeType.Whitespace)
                     {
                         continue;
                     }
-                    // Check the node type
-                    switch (reader.NodeType)
+                    if (reader.NodeType == XmlNodeType.Element && reader.Name == "Books")
                     {
-                        case XmlNodeType.Element:
-                            // If it's an element, switch on its name
-                            switch (reader.Name)
+                        books = new BookCollection();
+                        // Move to the next node
+                        while (!(reader.NodeType == XmlNodeType.EndElement && reader.Name == "Books"))
+                        {
+                            if (reader.NodeType == XmlNodeType.Element && reader.Name == "book")
                             {
-                                case "book":
-                                    // Handle the book element
-                                    //Console.WriteLine("Book:");
-                                    Book newBook = new Book();
-                                    books.BookList.Add(newBook);
-                                    break;
-                                case "title":
-                                    // Handle the title element
-                                    if (reader.NodeType == XmlNodeType.Whitespace || reader.NodeType == XmlNodeType.SignificantWhitespace)
+                                // Create Book object for each book element
+                                Book newBook = new Book();
+                                //Add book to the booklist of that object
+                                books.BookList.Add(newBook);
+
+                                while (!(reader.NodeType == XmlNodeType.EndElement && reader.Name == "book"))
+                                {
+                                    switch (reader.NodeType)
                                     {
-                                        continue;
+                                        case XmlNodeType.Element:
+                                            // If it's an element, check for its element name
+                                            switch (reader.Name)
+                                            {
+                                                case "title":
+                                                    //Store element content in a variable
+                                                    string title = reader.ReadElementContentAsString();
+                                                    //Print the content
+                                                    Console.WriteLine("Title: " + title);
+                                                    //Assign element content to the respective property in book object.
+                                                    books.BookList[^1].Title = title;
+                                                    break;
+                                                case "author":
+                                                    //Store element content in a variable
+                                                    string author = reader.ReadElementContentAsString();
+                                                    Console.WriteLine("Author: " + author);
+                                                    books.BookList[^1].Author = author;
+                                                    break;
+                                                case "year":
+                                                    //Store element content in a variable
+                                                    int year = reader.ReadElementContentAsInt();
+                                                    Console.WriteLine("Year: " + year);
+                                                    books.BookList[^1].Year = year;
+                                                    break;
+                                                case "category":
+                                                    //Store element content in a variable
+                                                    CategoryType category = (CategoryType)Enum.Parse(typeof(CategoryType), reader.ReadElementContentAsString());
+                                                    Console.WriteLine("Category: " + category);
+                                                    books.BookList[^1].Category = category;
+                                                    break;
+                                                case "price":
+                                                    //Store element content in a variable
+                                                    double price = reader.ReadElementContentAsDouble();
+                                                    Console.WriteLine("Price: " + price);
+                                                    books.BookList[^1].Price = price;
+                                                    Console.WriteLine();
+                                                    break;
+                                            }
+                                            //Declare break statement if nodetype is not an element.
+                                            break;
                                     }
-                                    // Console.WriteLine("Title: " + reader.ReadElementContentAsString());
-                                    // books.BookList[^1].Title = reader.ReadElementContentAsString();
-                                    string title = reader.ReadElementContentAsString();
-                                    Console.WriteLine("Title: " + title);
-                                    books.BookList[^1].Title = title;
-                                    break;
-                                case "author":
-                                    // Handle the author element
-                                    
-                                    string author = reader.ReadElementContentAsString();
-                                    Console.WriteLine("Author: " + author);
-                                    books.BookList[^1].Author = author;
-                                    break;
-                                case "year":
-                                    // Handle the year element
-                                    // Console.WriteLine("Year: " + reader.ReadElementContentAsInt());
-                                    // books.BookList[^1].Year = reader.ReadElementContentAsInt();
-                                    int year = reader.ReadElementContentAsInt();
-                                    Console.WriteLine("Year: " + year);
-                                    books.BookList[^1].Year = year;
-                                    break;
-                                case "category":
-                                    //Console.WriteLine("Category: " + reader.ReadElementContentAsString());
-                                    CategoryType category = (CategoryType)Enum.Parse(typeof(CategoryType), reader.ReadElementContentAsString());
-                                    Console.WriteLine("Category: " + category);
-                                    books.BookList[^1].Category = category;
-                                    break;
-                                case "price":
-                                    // Console.WriteLine("Price: " + reader.ReadElementContentAsDouble());
-                                    // books.BookList[^1].Price = reader.ReadElementContentAsInt();
-                                    double price = reader.ReadElementContentAsDouble();
-                                    Console.WriteLine("Price: " + price);
-                                    books.BookList[^1].Price = price;
-                                    Console.WriteLine();
-                                    break;
-                                    // Add cases for handling other elements as needed
+                                    reader.Read();
+                                }
                             }
-                            break;
-                            // Add cases for handling other node types as needed
+                            reader.Read();
+                        }
                     }
                 }
             }
+            //This will return a empty BookCollection
             return books;
         }
     }

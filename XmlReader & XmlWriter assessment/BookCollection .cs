@@ -7,12 +7,14 @@ namespace XmlReader___XmlWriter_assessment
 {
     public class BookCollection 
     {
+        //Property
         public List<Book> BookList { get; set; }
-
+        //Constructor
         public BookCollection()
         {
             BookList = new List<Book>();
         }
+        //This method will return BookCollection only with year provided by the user
         public BookCollection GetBooksByYear(int year) 
         {
             BookCollection result = new BookCollection();
@@ -25,7 +27,7 @@ namespace XmlReader___XmlWriter_assessment
             }
             return result;
         }
-
+        //This method will return BookCollection only with Category provided by the user
         public BookCollection GetBooksByCategory(CategoryType category) 
         {
             BookCollection result  = new BookCollection();

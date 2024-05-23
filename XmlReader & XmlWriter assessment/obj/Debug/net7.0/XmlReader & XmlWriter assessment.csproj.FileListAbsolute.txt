@@ -3,7 +3,6 @@ D:\DocIO\XmlReader & XmlWriter assessment\bin\Debug\net7.0\XmlReader & XmlWriter
 D:\DocIO\XmlReader & XmlWriter assessment\bin\Debug\net7.0\XmlReader & XmlWriter assessment.runtimeconfig.json
 D:\DocIO\XmlReader & XmlWriter assessment\bin\Debug\net7.0\XmlReader & XmlWriter assessment.dll
 D:\DocIO\XmlReader & XmlWriter assessment\bin\Debug\net7.0\XmlReader & XmlWriter assessment.pdb
-D:\DocIO\XmlReader & XmlWriter assessment\obj\Debug\net7.0\XmlReader & XmlWriter assessment.csproj.AssemblyReference.cache
 D:\DocIO\XmlReader & XmlWriter assessment\obj\Debug\net7.0\XmlReader & XmlWriter assessment.GeneratedMSBuildEditorConfig.editorconfig
 D:\DocIO\XmlReader & XmlWriter assessment\obj\Debug\net7.0\XmlReader & XmlWriter assessment.AssemblyInfoInputs.cache
 D:\DocIO\XmlReader & XmlWriter assessment\obj\Debug\net7.0\XmlReader & XmlWriter assessment.AssemblyInfo.cs

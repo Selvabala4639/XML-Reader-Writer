@@ -8,6 +8,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = XmlReader___XmlWriter_assessment
-build_property.ProjectDir = d:\DocIO\XmlReader & XmlWriter Assessment\
+build_property.ProjectDir = D:\DocIO\XmlReader & XmlWriter Assessment\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 

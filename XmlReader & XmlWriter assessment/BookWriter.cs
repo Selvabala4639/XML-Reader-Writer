@@ -10,45 +10,46 @@ namespace XmlReader___XmlWriter_assessment
     public class BookWriter
     {   
          public static void WriteToXml(BookCollection books, string filePath)
-    {
-        // Create XmlWriterSettings for more control over how the XML is written
-        XmlWriterSettings settings = new XmlWriterSettings();
-        settings.Indent = true; // Indent the XML for readability
-
-        // Create an XmlWriter instance
-        using (XmlWriter writer = XmlWriter.Create(filePath, settings))
         {
-            // Write the XML declaration
-            writer.WriteStartDocument();
+            // Create XmlWriterSettings for more control over how the XML is written
+            XmlWriterSettings settings = new XmlWriterSettings();
+            //Set XML indent to true for readability
+            settings.Indent = true; 
 
-            // Write the root element
-            writer.WriteStartElement("Books");
-
-            // Write each book
-            foreach (var book in books.BookList)
+            // Create an XmlWriter instance
+            using (XmlWriter writer = XmlWriter.Create(filePath, settings))
             {
-                writer.WriteStartElement("Book");
+                // Write the XML declaration/prolog
+                writer.WriteStartDocument();
+                
+                // Write the root element
+                writer.WriteStartElement("Books");
 
-                // Write individual elements
-                WriteElement(writer, "Title", book.Title);
-                WriteElement(writer, "Author", book.Author);
-                WriteElement(writer, "Year", book.Year.ToString());
-                WriteElement(writer, "Category", book.Category.ToString());
-                WriteElement(writer, "Price", book.Price.ToString());
+                // Write each book to xml file
+                foreach (var book in books.BookList)
+                {
+                    writer.WriteStartElement("book");
 
-                writer.WriteEndElement(); // End Book element
+                    // Write individual elements
+                    //Pass parameters as starting element and element content
+                    WriteElement(writer, "title", book.Title);
+                    WriteElement(writer, "author", book.Author);
+                    WriteElement(writer, "year", book.Year.ToString());
+                    WriteElement(writer, "category", book.Category.ToString());
+                    WriteElement(writer, "price", book.Price.ToString());
+
+                    writer.WriteEndElement(); // End Book element
+                }
+                writer.WriteEndElement(); // End Books element
+                writer.WriteEndDocument(); //End XML Declaration
             }
-            writer.WriteEndElement(); // End Books element
-            writer.WriteEndDocument();
         }
-    }
-
-    // Helper method to write an XML element with a specified name and value
-    private static void WriteElement(XmlWriter writer, string name, string value)
-    {
-        writer.WriteStartElement(name);
-        writer.WriteString(value);
-        writer.WriteEndElement();
-    }
+        //Method to write an XML element with a specified starting element and element content
+        private static void WriteElement(XmlWriter writer, string elementName, string elementContent)
+        {
+            writer.WriteStartElement(elementName);
+            writer.WriteString(elementContent);
+            writer.WriteEndElement();
+        }
     }
 }

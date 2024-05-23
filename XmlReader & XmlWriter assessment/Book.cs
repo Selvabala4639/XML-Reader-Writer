@@ -14,6 +14,7 @@ namespace XmlReader___XmlWriter_assessment
     }
     public class Book
     {
+        //Properties
         public string Title { get; set; }
         public string Author { get; set; }
         public int Year { get; set; }
